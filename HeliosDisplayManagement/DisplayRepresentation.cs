@@ -50,13 +50,13 @@ namespace HeliosDisplayManagement
 
         public static IEnumerable<DisplayRepresentation> GetDisplays(Profile profile = null)
         {
-            //var displays =
-            //    Display.GetDisplays()
-            //        .Select(display => new DisplayRepresentation(display))
-            //        .OrderByDescending(representation => representation.IsAvailable)
-            //        .GroupBy(representation => representation.Path)
-            //        .Select(grouping => grouping.First()).ToList();
-            var displays = new List<DisplayRepresentation>();
+            var displays =
+                Display.GetDisplays()
+                    .Select(display => new DisplayRepresentation(display))
+                    .OrderByDescending(representation => representation.IsAvailable)
+                    .GroupBy(representation => representation.Path)
+                    .Select(grouping => grouping.First()).ToList();
+            //var displays = new List<DisplayRepresentation>();
 
             if (profile != null)
             {

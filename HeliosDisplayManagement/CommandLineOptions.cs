@@ -6,32 +6,25 @@ using CommandLine.Text;
 using HeliosDisplayManagement.Resources;
 using HeliosDisplayManagement.Shared;
 
-namespace HeliosDisplayManagement
-{
-    internal class CommandLineOptions
-    {
+namespace HeliosDisplayManagement {
+    internal class CommandLineOptions {
         private static CommandLineOptions _defaultObject;
 
-        private CommandLineOptions()
-        {
+        private CommandLineOptions() {
         }
 
         [Option('a', @"action", HelpText = @"The action to perform",
             DefaultValue = HeliosStartupAction.None)]
         public HeliosStartupAction Action { get; set; }
 
-        public static CommandLineOptions Default
-        {
-            get
-            {
-                if (_defaultObject == null)
-                {
+        public static CommandLineOptions Default {
+            get {
+                if (_defaultObject == null) {
                     _defaultObject = new CommandLineOptions();
                     Parser.Default.ParseArguments(Environment.GetCommandLineArgs().Skip(1).ToArray(), _defaultObject);
                     Console.WriteLine(string.Join(" ", Environment.GetCommandLineArgs().Skip(1)));
 
-                    if (_defaultObject.LastParserState != null && _defaultObject.LastParserState.Errors.Count > 0)
-                    {
+                    if (_defaultObject.LastParserState != null && _defaultObject.LastParserState.Errors.Count > 0) {
                         throw new Exception(_defaultObject.LastParserState.Errors[0].ToString());
                     }
                 }
@@ -75,8 +68,7 @@ namespace HeliosDisplayManagement
 
         [HelpOption]
         // ReSharper disable once UnusedMember.Global
-        public string GetUsage()
-        {
+        public string GetUsage() {
             var help = HelpText.AutoBuild(this, current => HelpText.DefaultParsingErrorsHandler(this, current));
             MessageBox.Show(help, Language.Help, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
