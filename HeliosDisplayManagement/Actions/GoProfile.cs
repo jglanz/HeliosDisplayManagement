@@ -14,9 +14,8 @@ using HeliosDisplayManagement.Steam;
 using HeliosDisplayManagement.UIForms;
 
 namespace HeliosDisplayManagement.Actions {
-
     internal static class GoProfile {
-        public static bool execute(Profile profile) {
+        public static bool execute(Profile profile, bool showSplashForm = false) {
             if (profile.IsActive) {
                 return true;
             }
@@ -26,13 +25,16 @@ namespace HeliosDisplayManagement.Actions {
             try {
                 IPCService.GetInstance().Status = InstanceStatus.Busy;
                 var failed = false;
+                Func<bool> fnSwitch = () => {
+                    failed = !profile.Apply();
+                    return !failed;
+                };
+
+                if (!showSplashForm)
+                    return fnSwitch();
 
                 if (new SplashForm(() => {
-                        Task.Factory.StartNew(() => {
-                            if (!profile.Apply()) {
-                                failed = true;
-                            }
-                        }, TaskCreationOptions.LongRunning);
+                        Task.Factory.StartNew(fnSwitch, TaskCreationOptions.LongRunning);
                     }, 3, 30).ShowDialog() !=
                     DialogResult.Cancel) {
                     if (failed) {
@@ -41,6 +43,7 @@ namespace HeliosDisplayManagement.Actions {
 
                     return true;
                 }
+
 
                 return false;
             } finally {

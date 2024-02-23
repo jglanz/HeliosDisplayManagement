@@ -3,15 +3,12 @@ using System.Diagnostics;
 using System.ServiceModel;
 using System.Windows.Forms;
 
-namespace HeliosDisplayManagement.InterProcess
-{
+namespace HeliosDisplayManagement.InterProcess {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    internal class IPCService : IService
-    {
+    internal class IPCService: IService {
         private static ServiceHost _serviceHost;
 
-        private IPCService()
-        {
+        private IPCService() {
             Status = InstanceStatus.Busy;
         }
 
@@ -19,27 +16,21 @@ namespace HeliosDisplayManagement.InterProcess
 
         public InstanceStatus Status { get; set; }
 
-        public void StopHold()
-        {
+        public void StopHold() {
             Application.Exit();
         }
 
-        public static IPCService GetInstance()
-        {
-            if (_serviceHost != null || StartService())
-            {
+        public static IPCService GetInstance() {
+            if (_serviceHost != null || StartService()) {
                 return _serviceHost?.SingletonInstance as IPCService;
             }
 
             return null;
         }
 
-        public static bool StartService()
-        {
-            if (_serviceHost == null)
-            {
-                try
-                {
+        public static bool StartService() {
+            if (_serviceHost == null) {
+                try {
                     var process = Process.GetCurrentProcess();
                     var service = new IPCService();
                     _serviceHost = new ServiceHost(
@@ -50,15 +41,10 @@ namespace HeliosDisplayManagement.InterProcess
                     _serviceHost.Open();
 
                     return true;
-                }
-                catch (Exception)
-                {
-                    try
-                    {
+                } catch (Exception) {
+                    try {
                         _serviceHost?.Close();
-                    }
-                    catch
-                    {
+                    } catch {
                         // ignored
                     }
 

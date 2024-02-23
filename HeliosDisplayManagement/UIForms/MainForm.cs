@@ -259,13 +259,13 @@ namespace HeliosDisplayManagement.UIForms
 
         private void RefreshProfilesStatus()
         {
-            Profile.RefreshActiveStatus();
+            Profile.ClearCurrentProfileCache();
             lv_profiles.Invalidate();
         }
 
         private void ReloadProfiles()
         {
-            Profile.RefreshActiveStatus();
+            Profile.ClearCurrentProfileCache();
             var profiles = Profile.GetAllProfiles().ToArray();
             lv_profiles.Items.Clear();
             il_profiles.Images.Clear();

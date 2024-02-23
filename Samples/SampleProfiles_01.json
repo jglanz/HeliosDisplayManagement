@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "{71883ce5-acc8-4762-b250-9783c0309abf}",
+    "Name": "1-Widescreen",
+    "Paths": [
+      {
+        "PixelFormat": "PixelFormat32Bpp",
+        "Position": "0, 0",
+        "Resolution": "7680, 2160",
+        "SourceId": 0,
+        "Targets": [
+          {
+            "DevicePath": "\\\\?\\DISPLAY#SAM73D0#7&15e06fe7&1&UID268",
+            "DisplayName": "Odyssey G95NC",
+            "FrequencyInMillihertz": 60000,
+            "Rotation": "Identity",
+            "Scaling": "Identity",
+            "ScanLineOrdering": "Progressive",
+            "SurroundTopology": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "{ffcc4a45-3e88-46c6-9257-c0da6ec34468}",
+    "Name": "L-Shape",
+    "Paths": [
+      {
+        "PixelFormat": "PixelFormat32Bpp",
+        "Position": "0, 0",
+        "Resolution": "7680, 2160",
+        "SourceId": 0,
+        "Targets": [
+          {
+            "DevicePath": "\\\\?\\DISPLAY#SAM73D0#7&15e06fe7&1&UID268",
+            "DisplayName": "Odyssey G95NC",
+            "FrequencyInMillihertz": 60000,
+            "Rotation": "Identity",
+            "Scaling": "Identity",
+            "ScanLineOrdering": "Progressive",
+            "SurroundTopology": null
+          }
+        ]
+      },
+      {
+        "PixelFormat": "PixelFormat32Bpp",
+        "Position": "3840, -2160",
+        "Resolution": "3840, 2160",
+        "SourceId": 1,
+        "Targets": [
+          {
+            "DevicePath": "\\\\?\\DISPLAY#DEL4267#7&15e06fe7&1&UID256",
+            "DisplayName": "DELL U2723QE",
+            "FrequencyInMillihertz": 59940,
+            "Rotation": "Identity",
+            "Scaling": "Identity",
+            "ScanLineOrdering": "Progressive",
+            "SurroundTopology": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": "{3ecf2a2a-d1e5-11ee-8ab3-00155d0dfcbc}",
+    "Name": "3-U",
+    "Paths": [
+      {
+        "PixelFormat": "PixelFormat32Bpp",
+        "Position": "0, 0",
+        "Resolution": "7680, 2160",
+        "SourceId": 0,
+        "Targets": [
+          {
+            "DevicePath": "\\\\?\\DISPLAY#SAM73D0#7&15e06fe7&1&UID268",
+            "DisplayName": "Odyssey G95NC",
+            "FrequencyInMillihertz": 60000,
+            "Rotation": "Identity",
+            "Scaling": "Identity",
+            "ScanLineOrdering": "Progressive",
+            "SurroundTopology": null
+          }
+        ]
+      },
+      {
+        "PixelFormat": "PixelFormat32Bpp",
+        "Position": "3840, -2160",
+        "Resolution": "3840, 2160",
+        "SourceId": 1,
+        "Targets": [
+          {
+            "DevicePath": "\\\\?\\DISPLAY#DEL4267#7&15e06fe7&1&UID256",
+            "DisplayName": "DELL U2723QE",
+            "FrequencyInMillihertz": 59940,
+            "Rotation": "Identity",
+            "Scaling": "Identity",
+            "ScanLineOrdering": "Progressive",
+            "SurroundTopology": null
+          }
+        ]
+      },
+      {
+        "PixelFormat": "PixelFormat32Bpp",
+        "Position": "0, -2160",
+        "Resolution": "3840, 2160",
+        "SourceId": 2,
+        "Targets": [
+          {
+            "DevicePath": "\\\\?\\DISPLAY#DEL426A#7&15e06fe7&1&UID264",
+            "DisplayName": "DELL U2723QE",
+            "FrequencyInMillihertz": 59940,
+            "Rotation": "Identity",
+            "Scaling": "Identity",
+            "ScanLineOrdering": "Progressive",
+            "SurroundTopology": null
+          }
+        ]
+      }
+    ]
+  }
+]

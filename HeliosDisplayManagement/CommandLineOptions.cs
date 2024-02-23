@@ -19,29 +19,31 @@ namespace HeliosDisplayManagement {
 
         public static CommandLineOptions Default {
             get {
-                if (_defaultObject == null) {
-                    _defaultObject = new CommandLineOptions();
-                    Parser.Default.ParseArguments(Environment.GetCommandLineArgs().Skip(1).ToArray(), _defaultObject);
-                    Console.WriteLine(string.Join(" ", Environment.GetCommandLineArgs().Skip(1)));
+                if (_defaultObject != null) {
+                    return _defaultObject;
+                }
 
-                    if (_defaultObject.LastParserState != null && _defaultObject.LastParserState.Errors.Count > 0) {
-                        throw new Exception(_defaultObject.LastParserState.Errors[0].ToString());
-                    }
+                _defaultObject = new CommandLineOptions();
+                Parser.Default.ParseArguments(Environment.GetCommandLineArgs().Skip(1).ToArray(), _defaultObject);
+                Console.WriteLine(string.Join(" ", Environment.GetCommandLineArgs().Skip(1)));
+
+                if (_defaultObject.LastParserState != null && _defaultObject.LastParserState.Errors.Count > 0) {
+                    throw new Exception(_defaultObject.LastParserState.Errors[0].ToString());
                 }
 
                 return _defaultObject;
             }
         }
 
-        [Option(@"arguments",
-            HelpText = @"Program's argument to execute, for temporarily switch or to create shortcut.",
-            DefaultValue = null)]
-        public string ExecuteArguments { get; set; }
-
         [Option('e', @"execute",
             HelpText = @"Program's address to execute, for temporarily switch or to create shortcut.",
             DefaultValue = null)]
         public string ExecuteFilename { get; set; }
+
+        [Option(@"arguments",
+            HelpText = @"Program's argument to execute, for temporarily switch or to create shortcut.",
+            DefaultValue = null)]
+        public string ExecuteArguments { get; set; }
 
         [Option('w', @"waitfor",
             HelpText =
@@ -60,10 +62,13 @@ namespace HeliosDisplayManagement {
             DefaultValue = 0u)]
         public uint ExecuteSteamApp { get; set; }
 
-        [ParserState]
-        public IParserState LastParserState { get; set; }
+        [Option(@"config", HelpText = @"Profile identification string to switch to.",
+            DefaultValue = null)]
+        public string ConfigFilename { get; set; }
 
-        [Option('p', @"p", HelpText = @"Profile identification string to switch to.", DefaultValue = null)]
+        [ParserState] public IParserState LastParserState { get; set; }
+
+        [Option('p', @"profile", HelpText = @"Profile identification string to switch to.", DefaultValue = null)]
         public string ProfileId { get; set; }
 
         [HelpOption]

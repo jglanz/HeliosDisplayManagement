@@ -31,7 +31,7 @@ namespace HeliosDisplayManagement.ShellExtension
 
             if (Profile.GetAllProfiles().Any())
             {
-                Profile.RefreshActiveStatus();
+                Profile.ClearCurrentProfileCache();
 
                 foreach (var profile in Profile.GetAllProfiles())
                 {
