@@ -243,6 +243,11 @@ ModelManifest.xml
 
 .idea
 
+
+/Release
+/Debug
+/etc/certs
+
 # FAKE - F# Make
 .fake/
 HeliosDisplayManagement.Setup/HeliosDisplayManagement.Setup Data/*

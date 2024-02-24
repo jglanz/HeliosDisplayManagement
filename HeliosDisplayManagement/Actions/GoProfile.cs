@@ -15,7 +15,7 @@ using HeliosDisplayManagement.UIForms;
 
 namespace HeliosDisplayManagement.Actions {
     internal static class GoProfile {
-        public static bool execute(Profile profile, bool showSplashForm = false) {
+        public static bool Execute(Profile profile, bool showSplashForm = false) {
             if (profile.IsActive) {
                 return true;
             }
